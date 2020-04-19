@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <section className="deal-generator section">
+        <div className="container">
+          <header>
+            <h1 className="title is-1">Deal Generator</h1>
+          </header>
+        </div>
+      </section>
+      <footer className="footer">
+        <div className="content has-text-centered">
+          <p>Created by <a href="https://votemike.co.uk">Michael Gwynne</a></p>
+          <p>You may also like <a href="https://votemike.github.io/amortisation-calculator/">Amortisation Calculator</a> and <a href="https://votemike.github.io/stress-test/">Property Stress Test</a></p>
+        </div>
+      </footer>
+    </>
   );
 }
 
