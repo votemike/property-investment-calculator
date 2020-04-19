@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/deal-generator/static/css/main.f3efc10f.chunk.css",
+    "main.js": "/deal-generator/static/js/main.35476630.chunk.js",
+    "main.js.map": "/deal-generator/static/js/main.35476630.chunk.js.map",
+    "runtime-main.js": "/deal-generator/static/js/runtime-main.9723e802.js",
+    "runtime-main.js.map": "/deal-generator/static/js/runtime-main.9723e802.js.map",
+    "static/js/2.aae186bd.chunk.js": "/deal-generator/static/js/2.aae186bd.chunk.js",
+    "static/js/2.aae186bd.chunk.js.map": "/deal-generator/static/js/2.aae186bd.chunk.js.map",
+    "index.html": "/deal-generator/index.html",
+    "precache-manifest.f0628bd3375a58b7e03f41e1248a1711.js": "/deal-generator/precache-manifest.f0628bd3375a58b7e03f41e1248a1711.js",
+    "service-worker.js": "/deal-generator/service-worker.js",
+    "static/css/main.f3efc10f.chunk.css.map": "/deal-generator/static/css/main.f3efc10f.chunk.css.map",
+    "static/js/2.aae186bd.chunk.js.LICENSE.txt": "/deal-generator/static/js/2.aae186bd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9723e802.js",
+    "static/js/2.aae186bd.chunk.js",
+    "static/css/main.f3efc10f.chunk.css",
+    "static/js/main.35476630.chunk.js"
+  ]
+}
