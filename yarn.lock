@@ -10479,6 +10479,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+uk-ireland-stampduty-calculator@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/uk-ireland-stampduty-calculator/-/uk-ireland-stampduty-calculator-1.1.9.tgz#f2802d3934698cad4ca70115e5e7d6738c2eb2ba"
+  integrity sha512-/fR5GI3UxhnSzVSTZOkZ+xX2xYrYXN+g4BDqMVoZo5/jIjHXQUt2hO14L2r3ze/VYxCbDPGwHiE/jugpGGOoUQ==
+
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"

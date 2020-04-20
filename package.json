@@ -11,7 +11,8 @@
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "uk-ireland-stampduty-calculator": "^1.1.9"
   },
   "scripts": {
     "predeploy": "yarn run build",

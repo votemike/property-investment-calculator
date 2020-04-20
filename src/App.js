@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.scss';
+import Results from "./components/results";
+import Form from "./components/form";
 
 function App() {
+  const [formData, setFormData] = useState({});
+
   return (
     <>
       <section className="deal-generator section">
@@ -9,6 +13,9 @@ function App() {
           <header>
             <h1 className="title is-1">Deal Generator</h1>
           </header>
+          <Form formHandler={setFormData}/>
+          <Results formData={formData}/>
+          <div className="has-text-centered is-size-7">Assumptions: The property is in England and follows normal stamp duty costs with the added 3% for second homes. The property has no ground-rent or maintenance charge. The property is a single property and will remain a single property. The purchase will be funded by a bridging loan and will be remortgaged once refurbishment is complete. The mortgage will be interest only with 75% LTV. No other loans will exist apart from the mortgage.</div>
         </div>
       </section>
       <footer className="footer">
