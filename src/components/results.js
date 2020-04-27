@@ -55,7 +55,7 @@ const Results = ({formData}) => {
         </div>
         <div className="tile is-parent">
           <div className="tile is-child notification is-success">
-            <p className="title">Yearly Yield</p>
+            <p className="title">Yearly ROI</p>
             <p className="subtitle">{Math.round(100*monthlyProfit*12/moneyLeftIn)}%</p>
           </div>
         </div>

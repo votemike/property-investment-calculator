@@ -9,7 +9,7 @@ class Form extends React.Component {
   }
 
   getInitialFormState() {
-    return {name: '', price: '', solicitorFee: '', surveyFee: '', landRegistryFee: '', refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', loanCosts: '', mortgageFee: '', rentalIncome: '', lettingFee: '', insurance: ''};
+    return {name: '', price: '', solicitorFee: '', surveyFee: '', bankTransferFee: '', landRegistryFee: '', refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', loanCosts: '', mortgageFee: '', rentalIncome: '', lettingFee: '', insurance: ''};
   }
 
   handleInputChange(event) {
@@ -80,6 +80,14 @@ class Form extends React.Component {
                 </div>
                 <p className="help">
                   Survey Fee
+                </p>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <input className="input" name="bankTransferFee" value={this.state.bankTransferFee} onChange={this.handleInputChange} type="number" step="any" placeholder="35" id="bankTransferFee" required/>
+                </div>
+                <p className="help">
+                  Bank Transfer Fee
                 </p>
               </div>
               <div className="field">
