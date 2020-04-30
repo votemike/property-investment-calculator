@@ -1,16 +1,25 @@
 import React from 'react';
 import {formatCurrency} from '../utilities/formatters';
 import { buyerTypes, calculate, countries, propertyTypes } from "uk-ireland-stampduty-calculator";
+import {Fee, Finance, Payment, Property, Rental, Sale} from '@votemike/property';
 
 const Results = ({formData}) => {
   if (formData.name === undefined) {
     return null;
   }
   const stampDuty = calculate(parseFloat(formData.price), propertyTypes.RESIDENTIAL, countries.ENGLAND, buyerTypes.INVESTOR).tax;
-  const requiredMoney = parseFloat(formData.price) + parseFloat(formData.solicitorFee) + parseFloat(formData.surveyFee) + parseFloat(formData.landRegistryFee) + parseFloat(formData.refurbCost) + parseFloat(formData.refurbLoanCosts) + parseFloat(formData.mortgageFee) + parseFloat(stampDuty);
+  const sale = new Sale(parseFloat(formData.price), [new Fee(parseFloat(formData.solicitorFee)), new Fee(parseFloat(formData.surveyFee)), new Fee(parseFloat(formData.landRegistryFee)), new Fee(parseFloat(stampDuty))]);
   const mortgageAmount = parseFloat(formData.estimatedFinalValue)*3/4;
+  const rate = (parseFloat(formData.loanCosts) * 12 * 100) / mortgageAmount;
+  const mortgageFee = new Fee(parseFloat(formData.mortgageFee));
+  const mortgage = new Finance(mortgageAmount, false, 0, rate, [mortgageFee]);
+  const insurance = new Payment(parseFloat(formData.insurance), 'monthly');
+  const rental = new Rental(parseFloat(formData.rentalIncome), parseFloat(formData.lettingFee));
+  const property = new Property([mortgage], [insurance], [rental]);
+  const requiredMoney = sale.calculateTotalCosts() + parseFloat(formData.refurbCost) + parseFloat(formData.refurbLoanCosts) + mortgage.totalOneOffCosts;
   const moneyLeftIn = requiredMoney-mortgageAmount;
-  const monthlyProfit = (parseFloat(formData.rentalIncome)*(1-(parseFloat(formData.lettingFee)/100))) - parseFloat(formData.loanCosts) - parseFloat(formData.insurance);
+  const monthlyProfit = property.calculateMonthlyProfit();
+
   return (
     <div className="box">
       <h2 className="title is-3">Deal results</h2>

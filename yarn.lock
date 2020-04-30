@@ -1528,6 +1528,11 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
+"@votemike/property@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@votemike/property/-/property-0.1.0.tgz#7b6c75b34b2798e6b979e72628406a600083309f"
+  integrity sha512-fxwFDQZBQO0GfSEctFDXkJKbu0EJi7xHFfKSfkHBXT2PuRk8KVY9XbcwS93cc4fpjgmDjTy4zu9PI/3Y+6B+mA==
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
