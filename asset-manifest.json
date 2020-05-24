@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/deal-generator/static/css/main.9217ff12.chunk.css",
-    "main.js": "/deal-generator/static/js/main.aefb07e2.chunk.js",
-    "main.js.map": "/deal-generator/static/js/main.aefb07e2.chunk.js.map",
+    "main.js": "/deal-generator/static/js/main.d7ea9182.chunk.js",
+    "main.js.map": "/deal-generator/static/js/main.d7ea9182.chunk.js.map",
     "runtime-main.js": "/deal-generator/static/js/runtime-main.9723e802.js",
     "runtime-main.js.map": "/deal-generator/static/js/runtime-main.9723e802.js.map",
-    "static/js/2.49af989f.chunk.js": "/deal-generator/static/js/2.49af989f.chunk.js",
-    "static/js/2.49af989f.chunk.js.map": "/deal-generator/static/js/2.49af989f.chunk.js.map",
+    "static/js/2.065d708d.chunk.js": "/deal-generator/static/js/2.065d708d.chunk.js",
+    "static/js/2.065d708d.chunk.js.map": "/deal-generator/static/js/2.065d708d.chunk.js.map",
     "index.html": "/deal-generator/index.html",
-    "precache-manifest.1f7064163db9cce52104e35320ec9581.js": "/deal-generator/precache-manifest.1f7064163db9cce52104e35320ec9581.js",
+    "precache-manifest.f75062e1e842c3a77630dc049d34db54.js": "/deal-generator/precache-manifest.f75062e1e842c3a77630dc049d34db54.js",
     "service-worker.js": "/deal-generator/service-worker.js",
     "static/css/main.9217ff12.chunk.css.map": "/deal-generator/static/css/main.9217ff12.chunk.css.map",
-    "static/js/2.49af989f.chunk.js.LICENSE.txt": "/deal-generator/static/js/2.49af989f.chunk.js.LICENSE.txt"
+    "static/js/2.065d708d.chunk.js.LICENSE.txt": "/deal-generator/static/js/2.065d708d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9723e802.js",
-    "static/js/2.49af989f.chunk.js",
+    "static/js/2.065d708d.chunk.js",
     "static/css/main.9217ff12.chunk.css",
-    "static/js/main.aefb07e2.chunk.js"
+    "static/js/main.d7ea9182.chunk.js"
   ]
 }
