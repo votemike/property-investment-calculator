@@ -8,7 +8,11 @@ const Results = ({formData}) => {
     return null;
   }
   const stampDuty = calculate(parseFloat(formData.price), propertyTypes.RESIDENTIAL, countries.ENGLAND, buyerTypes.INVESTOR).tax;
-  const sale = new Sale(parseFloat(formData.price), [new Fee(parseFloat(formData.solicitorFee)), new Fee(parseFloat(formData.surveyFee)), new Fee(parseFloat(formData.landRegistryFee)), new Fee(parseFloat(stampDuty))]);
+  const fees = formData.acquisitionFees.map((object) => {
+    return new Fee(parseFloat(object.amount));
+  });
+  fees.push(new Fee(parseFloat(stampDuty)));
+  const sale = new Sale(parseFloat(formData.price), fees);
   const mortgageAmount = parseFloat(formData.estimatedFinalValue)*3/4;
   const rate = (parseFloat(formData.loanCosts) * 12 * 100) / mortgageAmount;
   const mortgageFee = new Fee(parseFloat(formData.mortgageFee));
@@ -52,11 +56,11 @@ const Results = ({formData}) => {
             </div>
             <div className="tile is-parent is-vertical">
               <div className="tile is-child notification is-info is-light">
-                <p className='title'>Money Left In Deal</p>
-                <p className='subtitle'>{formatCurrency(moneyLeftIn)}</p>
+                <p className='title'>{moneyLeftIn > 0 ? "Money Left In Deal" : "Money Pulled Out"}</p>
+                <p className='subtitle'>{formatCurrency(Math.abs(moneyLeftIn))}</p>
               </div>
               <div className="tile is-child notification is-primary">
-                <p className='title'>Monthly Profit</p>
+                <p className='title'>Monthly Cashflow</p>
                 <p className='subtitle'>{formatCurrency(monthlyProfit)}</p>
               </div>
             </div>
@@ -65,7 +69,7 @@ const Results = ({formData}) => {
         <div className="tile is-parent">
           <div className="tile is-child notification is-success">
             <p className="title">Yearly ROI</p>
-            <p className="subtitle">{Math.round(100*monthlyProfit*12/moneyLeftIn)}%</p>
+            <p className="subtitle">{moneyLeftIn > 0 ? Math.round(100*monthlyProfit*12/moneyLeftIn) : "Infinite"}%</p>
           </div>
         </div>
       </div>

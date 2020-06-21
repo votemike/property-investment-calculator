@@ -1,16 +1,38 @@
 import React from 'react';
+import FeeInput from "./feeInput";
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getInitialFormState();
+    this.handleAddFee = this.handleAddFee.bind(this);
+    this.handleFeeChange = this.handleFeeChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleRemoveFee = this.handleRemoveFee.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getInitialFormState() {
-    return {name: '', price: '', solicitorFee: '', surveyFee: '', bankTransferFee: '', landRegistryFee: '', refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', loanCosts: '', mortgageFee: '', rentalIncome: '', lettingFee: '', insurance: ''};
+    const defaultAcquisitionFees = [
+      {name: 'Bank Transfer Fee', amount: ''},
+      {name: 'Broker Fee', amount: ''},
+      {name: 'Land Registry Fee', amount: ''},
+      {name: 'Solicitor Fee', amount: ''},
+      {name: 'Sourcing Fee', amount: ''},
+      {name: 'Survey Fee', amount: ''},
+    ];
+    return {name: '', price: '', acquisitionFees: defaultAcquisitionFees, refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', loanCosts: '', mortgageFee: '', rentalIncome: '', lettingFee: '', insurance: ''};
   }
+
+  handleAddFee() {
+    this.setState({'acquisitionFees': [...this.state.acquisitionFees, {name: '', amount: ''}]});
+  }
+
+  handleFeeChange(event) {
+    const updatedFees = [...this.state.acquisitionFees];
+    updatedFees[event.target.dataset.idx][event.target.dataset.name] = event.target.value;
+    this.setState({'acquisitionFees': updatedFees});
+  };
 
   handleInputChange(event) {
     const target = event.target;
@@ -18,6 +40,12 @@ class Form extends React.Component {
     const name = target.name;
 
     this.setState({[name]: value});
+  }
+
+  handleRemoveFee(event) {
+    const updatedFees = [...this.state.acquisitionFees];
+    updatedFees.splice(event.target.dataset.idx, 1);
+    this.setState({'acquisitionFees': updatedFees});
   }
 
   handleSubmit(event) {
@@ -61,42 +89,22 @@ class Form extends React.Component {
               </div>
             </div>
           </div>
+          {this.state.acquisitionFees.map((fee, idx) => {
+            return <FeeInput idx={idx} fee={fee} handleFeeChange={this.handleFeeChange} handleRemoveFee={this.handleRemoveFee}/>
+          })}
           <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">Fees</label>
+            <div className="field-label">
             </div>
             <div className="field-body">
               <div className="field">
                 <div className="control">
-                  <input className="input" name="solicitorFee" value={this.state.solicitorFee} onChange={this.handleInputChange} type="number" step="any" placeholder="1495" id="solicitorFee" required/>
+                  <input
+                    className="button"
+                    type="button"
+                    value="Add extra fee"
+                    onClick={this.handleAddFee}
+                  />
                 </div>
-                <p className="help">
-                  Solicitor Fee
-                </p>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <input className="input" name="surveyFee" value={this.state.surveyFee} onChange={this.handleInputChange} type="number" step="any" placeholder="395" id="surveyFee" required/>
-                </div>
-                <p className="help">
-                  Survey Fee
-                </p>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <input className="input" name="bankTransferFee" value={this.state.bankTransferFee} onChange={this.handleInputChange} type="number" step="any" placeholder="35" id="bankTransferFee" required/>
-                </div>
-                <p className="help">
-                  Bank Transfer Fee
-                </p>
-              </div>
-              <div className="field">
-                <div className="control">
-                  <input className="input" name="landRegistryFee" value={this.state.landRegistryFee} onChange={this.handleInputChange} type="number" step="any" placeholder="200" id="landRegistryFee" required/>
-                </div>
-                <p className="help">
-                  Land Registry
-                </p>
               </div>
             </div>
           </div>
