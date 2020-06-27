@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0be5ff2bcff12ba769fe667c21777bbd",
+    "revision": "ca9aa81ce9c057b5cb10a4f7648de266",
     "url": "/deal-generator/index.html"
   },
   {
-    "revision": "106a1369faabb2d19787",
+    "revision": "d9b7460796f706694c2e",
     "url": "/deal-generator/static/css/main.9217ff12.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/deal-generator/static/js/2.23fd406d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "106a1369faabb2d19787",
-    "url": "/deal-generator/static/js/main.67762498.chunk.js"
+    "revision": "d9b7460796f706694c2e",
+    "url": "/deal-generator/static/js/main.9ab46c06.chunk.js"
   },
   {
     "revision": "327b901311f4444c16ce",
