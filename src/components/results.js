@@ -17,9 +17,11 @@ const Results = ({formData}) => {
   const rate = (parseFloat(formData.loanCosts) * 12 * 100) / mortgageAmount;
   const mortgageFee = new Fee(parseFloat(formData.mortgageFee));
   const mortgage = new Finance(mortgageAmount, false, 0, rate, [mortgageFee]);
-  const insurance = new Payment(parseFloat(formData.insurance), 'monthly');
+  const payments = formData.annualPayments.map((object) => {
+    return new Payment(parseFloat(object.amount), 'yearly');
+  });
   const rental = new Rental(parseFloat(formData.rentalIncome), parseFloat(formData.lettingFee));
-  const property = new Property(formData.name, [mortgage], [insurance], [rental]);
+  const property = new Property(formData.name, [mortgage], payments, [rental]);
   const requiredMoney = sale.calculateTotalCosts() + parseFloat(formData.refurbCost) + parseFloat(formData.refurbLoanCosts) + mortgage.totalOneOffCosts;
   const moneyLeftIn = requiredMoney-mortgageAmount;
   const monthlyProfit = property.calculateMonthlyProfit();

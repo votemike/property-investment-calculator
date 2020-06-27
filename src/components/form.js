@@ -1,14 +1,18 @@
 import React from 'react';
 import FeeInput from "./feeInput";
+import PaymentInput from "./paymentInput";
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getInitialFormState();
     this.handleAddFee = this.handleAddFee.bind(this);
+    this.handleAddPayment = this.handleAddPayment.bind(this);
     this.handleFeeChange = this.handleFeeChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handlePaymentChange = this.handlePaymentChange.bind(this);
     this.handleRemoveFee = this.handleRemoveFee.bind(this);
+    this.handleRemovePayment = this.handleRemovePayment.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,17 +25,33 @@ class Form extends React.Component {
       {name: 'Sourcing Fee', amount: ''},
       {name: 'Survey Fee', amount: ''},
     ];
-    return {name: '', price: '', acquisitionFees: defaultAcquisitionFees, refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', loanCosts: '', mortgageFee: '', rentalIncome: '', lettingFee: '', insurance: ''};
+    const defaultAnnualPayments = [
+      {name: 'Council Tax', amount: ''},
+      {name: 'Ground Rent', amount: ''},
+      {name: 'Insurance', amount: ''},
+      {name: 'Maintenance Fee', amount: ''},
+    ];
+    return {name: '', price: '', acquisitionFees: defaultAcquisitionFees, refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', loanCosts: '', mortgageFee: '', rentalIncome: '', lettingFee: '', annualPayments: defaultAnnualPayments};
   }
 
   handleAddFee() {
     this.setState({'acquisitionFees': [...this.state.acquisitionFees, {name: '', amount: ''}]});
   }
 
+  handleAddPayment() {
+    this.setState({'annualPayments': [...this.state.annualPayments, {name: '', amount: ''}]});
+  }
+
   handleFeeChange(event) {
     const updatedFees = [...this.state.acquisitionFees];
     updatedFees[event.target.dataset.idx][event.target.dataset.name] = event.target.value;
     this.setState({'acquisitionFees': updatedFees});
+  };
+
+  handlePaymentChange(event) {
+    const updatedPayments = [...this.state.annualPayments];
+    updatedPayments[event.target.dataset.idx][event.target.dataset.name] = event.target.value;
+    this.setState({'annualPayments': updatedPayments});
   };
 
   handleInputChange(event) {
@@ -46,6 +66,12 @@ class Form extends React.Component {
     const updatedFees = [...this.state.acquisitionFees];
     updatedFees.splice(event.target.dataset.idx, 1);
     this.setState({'acquisitionFees': updatedFees});
+  }
+
+  handleRemovePayment(event) {
+    const updatedPayments = [...this.state.annualPayments];
+    updatedPayments.splice(event.target.dataset.idx, 1);
+    this.setState({'annualPayments': updatedPayments});
   }
 
   handleSubmit(event) {
@@ -90,7 +116,7 @@ class Form extends React.Component {
             </div>
           </div>
           {this.state.acquisitionFees.map((fee, idx) => {
-            return <FeeInput idx={idx} fee={fee} handleFeeChange={this.handleFeeChange} handleRemoveFee={this.handleRemoveFee}/>
+            return <FeeInput idx={idx} fee={fee} handleFeeChange={this.handleFeeChange} handleRemoveFee={this.handleRemoveFee} key={`acquisitionFee-${idx}`}/>
           })}
           <div className="field is-horizontal">
             <div className="field-label">
@@ -215,18 +241,22 @@ class Form extends React.Component {
               </div>
             </div>
           </div>
+          {this.state.annualPayments.map((payment, idx) => {
+            return <PaymentInput idx={idx} payment={payment} handlePaymentChange={this.handlePaymentChange} handleRemovePayment={this.handleRemovePayment}  key={`annualPayment-${idx}`}/>
+          })}
           <div className="field is-horizontal">
-            <div className="field-label is-normal">
-              <label className="label">Insurance</label>
+            <div className="field-label">
             </div>
             <div className="field-body">
               <div className="field">
                 <div className="control">
-                  <input className="input" name="insurance" value={this.state.insurance} onChange={this.handleInputChange} type="number" step="any" placeholder="35" id="insurance" required/>
+                  <input
+                    className="button"
+                    type="button"
+                    value="Add extra payment"
+                    onClick={this.handleAddPayment}
+                  />
                 </div>
-                <p className="help">
-                  How much will any insurance cost each month?
-                </p>
               </div>
             </div>
           </div>
