@@ -13,8 +13,8 @@ const Results = ({formData}) => {
   });
   fees.push(new Fee(parseFloat(stampDuty)));
   const sale = new Sale(parseFloat(formData.price), fees);
-  const mortgageAmount = parseFloat(formData.estimatedFinalValue)*3/4;
-  const rate = (parseFloat(formData.loanCosts) * 12 * 100) / mortgageAmount;
+  const mortgageAmount = parseFloat(formData.mortgageAmount);
+  const rate = parseFloat(formData.initialMortgageRate);
   const mortgageFee = new Fee(parseFloat(formData.mortgageFee));
   const mortgage = new Finance(mortgageAmount, false, 0, rate, [mortgageFee]);
   const payments = formData.annualPayments.map((object) => {

@@ -31,7 +31,7 @@ class Form extends React.Component {
       {name: 'Insurance', amount: ''},
       {name: 'Maintenance Fee', amount: ''},
     ];
-    return {name: '', price: '', acquisitionFees: defaultAcquisitionFees, refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', loanCosts: '', mortgageFee: '', rentalIncome: '', lettingFee: '', annualPayments: defaultAnnualPayments};
+    return {name: '', price: '', acquisitionFees: defaultAcquisitionFees, refurbCost: '', refurbLoanCosts: '', estimatedFinalValue: '', mortgageAmount: '', initialMortgageRate: '', mortgageFee: '', rentalIncome: '', lettingFee: '', annualPayments: defaultAnnualPayments};
   }
 
   handleAddFee() {
@@ -183,15 +183,23 @@ class Form extends React.Component {
           </div>
           <div className="field is-horizontal">
             <div className="field-label is-normal">
-              <label className="label">Mortgage Cost</label>
+              <label className="label">Mortgage</label>
             </div>
             <div className="field-body">
               <div className="field">
                 <div className="control">
-                  <input className="input" name="loanCosts" value={this.state.loanCosts} onChange={this.handleInputChange} type="number" step="any" placeholder="250" id="loanCosts" required/>
+                  <input className="input" name="mortgageAmount" value={this.state.mortgageAmount} onChange={this.handleInputChange} type="number" placeholder="262500" id="mortgageAmount" required/>
                 </div>
                 <p className="help">
-                  How much will the mortgage payments cost each month?
+                  Mortgage Amount
+                </p>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <input className="input" name="initialMortgageRate" value={this.state.initialMortgageRate} onChange={this.handleInputChange} type="number" step="any" placeholder="3.19" id="initialMortgageRate" required/>
+                </div>
+                <p className="help">
+                  Initial Mortgage Rate
                 </p>
               </div>
             </div>
