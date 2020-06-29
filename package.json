@@ -1,6 +1,6 @@
 {
-  "name": "deal-generator",
-  "homepage": "https://votemike.github.io/deal-generator",
+  "name": "property-investment-calculator",
+  "homepage": "https://votemike.github.io/property-investment-calculator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
