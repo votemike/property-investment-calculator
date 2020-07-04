@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/property-investment-calculator/precache-manifest.0591e56479a0ada4965d1e71c9a324fb.js"
+  "/property-investment-calculator/precache-manifest.b102bf15092658de1bb553f8db280d8d.js"
 );
 
 self.addEventListener('message', (event) => {
