@@ -1,28 +1,18 @@
 import React from 'react';
 import {formatCurrency} from '../utilities/formatters';
-import { buyerTypes, calculate, countries, propertyTypes } from "uk-ireland-stampduty-calculator";
-import {Fee, Finance, Payment, Property, Rental, Sale} from '@votemike/property';
+import {toMortgage, toProperty, toSale} from '../utilities/formDataMolder';
+import {Link} from "react-router-dom";
 
 const Results = ({formData}) => {
   if (formData.name === undefined) {
     return null;
   }
-  const stampDuty = calculate(parseFloat(formData.price), propertyTypes.RESIDENTIAL, countries.ENGLAND, buyerTypes.INVESTOR).tax;
-  const fees = formData.acquisitionFees.map((object) => {
-    return new Fee(parseFloat(object.amount));
-  });
-  fees.push(new Fee(parseFloat(stampDuty)));
-  const sale = new Sale(parseFloat(formData.price), fees);
-  const mortgageAmount = parseFloat(formData.mortgageAmount);
-  const rate = parseFloat(formData.initialMortgageRate);
-  const mortgageFee = new Fee(parseFloat(formData.mortgageFee));
-  const mortgage = new Finance(mortgageAmount, false, 0, rate, [mortgageFee]);
-  const payments = formData.annualPayments.map((object) => {
-    return new Payment(parseFloat(object.amount), 'yearly');
-  });
-  const rental = new Rental(parseFloat(formData.rentalIncome), parseFloat(formData.lettingFee));
-  const property = new Property(formData.name, [mortgage], payments, [rental]);
+
+  const sale = toSale(formData);
+  const mortgage = toMortgage(formData);
+  const property = toProperty(formData);
   const requiredMoney = sale.calculateTotalCosts() + parseFloat(formData.refurbCost) + parseFloat(formData.refurbLoanCosts) + mortgage.totalOneOffCosts;
+  const mortgageAmount = parseFloat(formData.mortgageAmount);
   const moneyLeftIn = requiredMoney-mortgageAmount;
   const monthlyProfit = property.calculateMonthlyProfit();
 
@@ -75,6 +65,7 @@ const Results = ({formData}) => {
           </div>
         </div>
       </div>
+      <Link to="/investor-pack" className="button is-primary">Generate Investor Pack</Link>
     </div>
   );
 };
