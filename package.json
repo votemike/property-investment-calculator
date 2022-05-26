@@ -13,7 +13,7 @@
     "@votemike/property": "^0.2.0",
     "bulma": "^0.9.0",
     "dom-to-pdf": "^0.1.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
